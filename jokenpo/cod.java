@@ -1,0 +1,67 @@
+package com.example.jokenpo;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import java.util.Random;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        //int [] image = {R.id.papelJog1, R.id.papelJog1, R.id.papelJog1};
+    }
+    public void jogar (View View){
+        Button button =findViewById(R.id.button);
+
+        Random random = new Random();
+        int numAleatorioJog1 = random.nextInt(2);
+        int numAleatorioJog2 = random.nextInt(2);
+
+        ImageView papelJog1 = findViewById(R.id.papelJog1);
+
+        ImageView papelJog2 = findViewById(R.id.papelJog2);
+
+        ImageView pedraJog1 = findViewById(R.id.pedraJog1);
+        ImageView pedraJog2 = findViewById(R.id.pedraJog2);
+
+        ImageView tesouraJog1 = findViewById(R.id.tesouraJog1);
+        ImageView tesouraJog2 = findViewById(R.id.tesouraJog2);
+
+        ImageView imageView = null;
+        if (numAleatorioJog1 == 0) {
+            imageView.setImageResource(R.drawable.papel);
+            pedraJog1.setImageDrawable(null);
+            tesouraJog1.setImageDrawable(null);
+        } else if (numAleatorioJog1 == 1) {
+            imageView.setImageResource(R.drawable.pedra);
+            papelJog1.setImageDrawable(null);
+            tesouraJog1.setImageDrawable(null);
+        } else {
+            imageView.setImageResource(R.drawable.tesoura);
+            papelJog1.setImageDrawable(null);
+            pedraJog1.setImageDrawable(null);
+        }
+
+        if (numAleatorioJog2 == 0) {
+            imageView.setImageResource(R.drawable.papel);
+            pedraJog2.setImageDrawable(null);
+            tesouraJog2.setImageDrawable(null);
+        } else if (numAleatorioJog2 == 1) {
+            imageView.setImageResource(R.drawable.pedra);
+            papelJog2.setImageDrawable(null);
+            tesouraJog2.setImageDrawable(null);
+        } else {
+            imageView.setImageResource(R.drawable.tesoura);
+            papelJog2.setImageDrawable(null);
+            pedraJog2.setImageDrawable(null);
+        }
+
+    }
+}
