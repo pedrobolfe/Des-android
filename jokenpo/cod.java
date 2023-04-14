@@ -1,6 +1,3 @@
-//https://blogger.googleusercontent.com/img/a/AVvXsEgkphJEYENVkOWWTSmPIlu4dKjMmVJ1ajWQLE8hiUjQG73qmOB3rrQJTxW3mLGRvnx-TR3VrlDFMWIA8UZwd7ODwMXYVTE5mQROUtiTLKIWt4R12IAvrimtU6Yl7CRUQCRqAA5w6aAhgjoszyAzIOM7bBPxda6h8MPjWCWiCj_eLEckf8T1pUm0cBO8=s16000
-package com.example.jokenpo;
-
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import java.util.Random;
@@ -37,31 +34,37 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView imageView = null;
         if (numAleatorioJog1 == 1) {
-            imageView.setImageResource(R.drawable.papel);
-            pedraJog1.setImageDrawable(null);
-            tesouraJog1.setImageDrawable(null);
+            papelJog1.setVisibility(View.VISIBLE);
+//            pedraJog1.setImageDrawable(null);
+//            tesouraJog1.setImageDrawable(null);
         } else if (numAleatorioJog1 == 2) {
-            imageView.setImageResource(R.drawable.pedra);
-            papelJog1.setImageDrawable(null);
-            tesouraJog1.setImageDrawable(null);
+            pedraJog1.setVisibility(View.VISIBLE);
+//            papelJog1.setImageDrawable(null);
+//            tesouraJog1.setImageDrawable(null);
         } else {
-            imageView.setImageResource(R.drawable.tesoura);
-            papelJog1.setImageDrawable(null);
-            pedraJog1.setImageDrawable(null);
+            tesouraJog1.setVisibility(View.VISIBLE);
+//            papelJog1.setImageDrawable(null);
+//            pedraJog1.setImageDrawable(null);
         }
 
         if (numAleatorioJog2 == 1) {
-            imageView.setImageResource(R.drawable.papel);
-            pedraJog2.setImageDrawable(null);
-            tesouraJog2.setImageDrawable(null);
+            papelJog2.setVisibility(View.VISIBLE);
+
+//            pedraJog2.setImageDrawable(null);
+//            tesouraJog2.setImageDrawable(null);
         } else if (numAleatorioJog2 == 2) {
-            imageView.setImageResource(R.drawable.pedra);
-            papelJog2.setImageDrawable(null);
-            tesouraJog2.setImageDrawable(null);
+            pedraJog2.setVisibility(View.VISIBLE);
+//            imageView.setImageResource(R.drawable.pedra);
+//
+//            papelJog2.setImageDrawable(null);
+//            tesouraJog2.setImageDrawable(null);
+
         } else {
-            imageView.setImageResource(R.drawable.tesoura);
-            papelJog2.setImageDrawable(null);
-            pedraJog2.setImageDrawable(null);
+            tesouraJog2.setVisibility(View.VISIBLE);
+            //imageView.setImageResource(R.drawable.tesoura);
+
+            //papelJog2.setImageDrawable(null);
+            //pedraJog2.setImageDrawable(null);
         }
 //        Pedra perde para papel[1] e ganha para tesoura[3]
 //        Papel perde para tesoura[3] e ganha para pedra[2]
@@ -69,11 +72,8 @@ public class MainActivity extends AppCompatActivity {
         //int[] images = {R.drawable.papel, R.drawable.tesoura, R.drawable.pedra};
         if(((numAleatorioJog1 == 3) && (numAleatorioJog2 == 1)) || ((numAleatorioJog1 == 2) && (numAleatorioJog2 == 3)) || ((numAleatorioJog1 == 1) && (numAleatorioJog2 == 2))){
             textResult = name1;
-        }else if(numAleatorioJog1 != numAleatorioJog2){
+        }else if(numAleatorioJog1 != numAleatorioJog2) {
             textResult = name2;
         }
-
-
-
     }
 }
