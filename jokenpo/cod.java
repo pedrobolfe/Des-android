@@ -1,3 +1,4 @@
+//https://blogger.googleusercontent.com/img/a/AVvXsEgkphJEYENVkOWWTSmPIlu4dKjMmVJ1ajWQLE8hiUjQG73qmOB3rrQJTxW3mLGRvnx-TR3VrlDFMWIA8UZwd7ODwMXYVTE5mQROUtiTLKIWt4R12IAvrimtU6Yl7CRUQCRqAA5w6aAhgjoszyAzIOM7bBPxda6h8MPjWCWiCj_eLEckf8T1pUm0cBO8=s16000
 package com.example.jokenpo;
 
 import androidx.appcompat.app.AppCompatActivity;
