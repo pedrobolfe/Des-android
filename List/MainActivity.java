@@ -1,7 +1,9 @@
 package com.example.appaula;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,18 +15,21 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView listLocais;
     private String[] items = {
-            "Angra dos Reis",
-            "Rio de Janeiro",
-            "Missal",
-            "Curitiba",
-            "Cascavel",
-            "São Paulo",
-            "Gramado",
-            "Foz do Iguaçu",
-            "Porto Alegre",
-            "Belo Horizonte",
-            "Salvador",
-            "Fortaleza"
+            "Tópicos Especiais de Informatica",
+            "Redes de Computadores",
+            "Programção Web",
+            "Programção orientada a objetos",
+            "Biologia",
+            "Português",
+            "Inglês",
+            "Matemática",
+            "Química",
+            "Hístoria",
+            "Física",
+            "Sociologia",
+            "Filosofia",
+            "Geografia",
+            "Projeto de Conclusão de Curso"
     };
 
     @Override
@@ -52,8 +57,43 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String valorSelecionado = listLocais.getItemAtPosition(position).toString();
-                Toast.makeText(getApplicationContext(), valorSelecionado, Toast.LENGTH_SHORT).show();
+//              Toast.makeText(getApplicationContext(), valorSelecionado, Toast.LENGTH_SHORT).show();
+                dialog(view, valorSelecionado);
             }
         });
+
+    }
+
+    public void dialog(View view, String materia){
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+
+        //configurar titulo e mensagem
+        dialog.setTitle("Matricula");
+        dialog.setMessage("Deseja se matricular na matéria " + materia);
+
+        //configurar cancelamento do alert dialog
+        dialog.setCancelable(false);
+
+        //configurar icone
+        dialog.setIcon(android.R.drawable.ic_btn_speak_now);
+
+        //configurar açoes para sim e nâo
+        dialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getApplicationContext(), "Mátricula foi feita " + materia, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        dialog.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getApplicationContext(), "Mátricula não foi feita ", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        dialog.create();
+        dialog.show();
     }
 }
