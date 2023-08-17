@@ -9,16 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.recycleview.R;
-import com.example.recycleview.model.Filme;
+import com.example.recycleview.model.Compromisso;
 
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
-    private List<Filme> listaFilmes;
+    private List<Compromisso> listaCompromissos;
 
-    public Adapter(List<Filme> lista){
-        this.listaFilmes = lista;
+    public Adapter(List<Compromisso> lista){
+        this.listaCompromissos = lista;
     }
 
 
@@ -32,16 +32,16 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Filme filme = listaFilmes.get(position);
+        Compromisso compromisso = listaCompromissos.get(position);
 
-        holder.titulo.setText(filme.getTituloFilme());
-        holder.genero.setText(filme.getGenero());
-        holder.ano.setText(filme.getAno());
+        holder.titulo.setText(compromisso.getTituloCompromisso());
+        holder.genero.setText(compromisso.getHorario());
+        holder.ano.setText(compromisso.getData());
     }
 
     @Override
     public int getItemCount() {
-        return listaFilmes.size();
+        return listaCompromissos.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
@@ -59,6 +59,4 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
         }
     }
-
-
 }
