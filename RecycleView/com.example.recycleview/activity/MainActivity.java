@@ -1,15 +1,20 @@
 package com.example.recycleview.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.recycleview.R;
 import com.example.recycleview.adapter.Adapter;
-import com.example.recycleview.model.Filme;
+import com.example.recycleview.model.Compromisso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,33 +22,21 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private List<Filme> listaFilmes = new ArrayList<>();
+    private List<Compromisso> listaCompromissos = new ArrayList<>();
 
     public void criarFilmes(){
-        Filme filme = new Filme("Homem Aranha", "ação", "2022");
-        this.listaFilmes.add(filme);
+        Compromisso compromisso = new Compromisso("Almoço", "Black House", "17/08", "12:05");
+        this.listaCompromissos.add(compromisso);
 
-        filme = new Filme("Mulher Maravilha", "ação", "2019");
-        this.listaFilmes.add(filme);
+        compromisso = new Compromisso("Treinar", "Gym", "18/08", "18:40");
+        this.listaCompromissos.add(compromisso);
 
-        filme = new Filme("Matrix", "ficção", "2002");
-        this.listaFilmes.add(filme);
+        compromisso = new Compromisso("Aula", "IF", "tds dias", "7:30");
+        this.listaCompromissos.add(compromisso);
 
-        filme = new Filme("Forrest Gump", "drama", "1994");
-        this.listaFilmes.add(filme);
-
-        filme = new Filme("Harry Potter", "ficção", "2004");
-        this.listaFilmes.add(filme);
-
-        filme = new Filme("Guardiões da Galaxia: Vol 3", "ação", "2023");
-        this.listaFilmes.add(filme);
-
-        filme = new Filme("Deadpool", "ação", "2019");
-        this.listaFilmes.add(filme);
+        compromisso = new Compromisso("Trabalho", "Mundo 365", "Segunda, Quarta e Sexta", "13:30");
+        this.listaCompromissos.add(compromisso);
     }
-
-
-
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -57,15 +50,46 @@ public class MainActivity extends AppCompatActivity {
         this.criarFilmes();
 
         //Configurar adapter
-        Adapter adapter = new Adapter(listaFilmes);
-
-
+        Adapter adapter = new Adapter(listaCompromissos);
 
         //Configurar RecyclerView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
         recyclerView.setAdapter(adapter); //criar adapter
+        
+        // evento click
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(
+                getApplicationContext(),
+                recyclerView,
+                new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Compromisso compromisso = listaCompromissos.get(position);
+                        Toast.makeText(
+                            getApplicationContext(),
+                            "Local: " + compromisso.getLocal(),
+                            Toast.LENGTH_SHORT
+                        ).show();
+                    }
+
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+                        Compromisso compromisso = listaCompromissos.get(position);
+                        Toast.makeText(
+                            getApplicationContext(),
+                            "Local: " + compromisso.getLocal(),
+                            Toast.LENGTH_LONG
+                        ).show();
+                    }
+
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                    }
+                }
+        ));
     }
 
 }
